@@ -1,0 +1,55 @@
+spring:
+  application:
+    name: Stokn-Middle
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          issuer-uri: https://cognito-idp.eu-west-3.amazonaws.com/eu-west-3_Ktr1oEqpc
+  datasource:
+    driverClassName: org.h2.Driver
+    url: jdbc:h2:mem:test_db
+  jpa:
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    hibernate:
+      ddl-auto: update
+
+
+aws:
+  access-key:
+  secret-key:
+  region: eu-west-3
+  cognito:
+    user-pool-id: eu-west-3_Ktr1oEqpc
+    app-client-id: 712mp2d8e4044nsrrf0vam9i1b
+    app-client-secret: 1rf61uhh56idclhjaqqrd8butrt5gmqvdg4e033iolgpqrrh8k7o
+
+
+springdoc:
+  version: 'v1.0'
+  swagger-ui:
+    oauth:
+      use-basic-authentication-with-access-code-grant: true
+      use-pkce-with-authorization-code-grant: true
+  oAuthFlow:
+    tokenUrl: https://stokn-api-test.auth.eu-west-3.amazoncognito.com/oauth2/token
+
+
+bitscor:
+  client-id: 74jqp5i9jd67fm84r8pkhr7uhh
+  client-secret: 81d6p9f1dfjvs59v8995tec8qr29j2njn4t8hu84kh8k534p5rm
+
+
+score-chain: ""
+binance:
+  brokerage-account-encryption-key: ""
+
+kraken:
+  encryption-key: ""
+
+stokn:
+  account-id: "stokn-dev"
+  fees-portfolio-id: "stokn-fees-dev"
+
+
+coins: ETH,BTC,USDC,USDT,MATIC,ATOM,DOT,SOL,OP,ARB

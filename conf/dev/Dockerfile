@@ -1,0 +1,21 @@
+FROM openjdk:17-alpine
+
+########START TO EDIT########
+ARG JAR_FILE_NAME=stokn-middle.jar
+########END TO EDIT########
+
+ARG JAR_FILE_PATH=./${JAR_FILE_NAME}
+
+ARG CONF_FILE_NAME=application.yml
+ARG CONF_FILE_PATH=./${CONF_FILE_NAME}
+
+ARG ENV_CONF_FILE_NAME=application-$ENVIRONMENT.yml
+ARG ENV_CONF_FILE_PATH=./${ENV_CONF_FILE_NAME}
+
+COPY ${JAR_FILE_PATH} ${JAR_FILE_NAME}
+COPY ${CONF_FILE_PATH} /config/${CONF_FILE_NAME}
+#COPY ${ENV_CONF_FILE_PATH} /config/${ENV_CONF_FILE_NAME}
+
+ENV JAR_FILE=$JAR_FILE_NAME
+ENV JAVA_OPTS="-XX:+CrashOnOutOfMemoryError -Xms1G -Xmx5G"
+ENTRYPOINT java -jar $JAR_FILE --spring.profiles.active=$ENVIRONMENT

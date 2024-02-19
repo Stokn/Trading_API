@@ -1,0 +1,62 @@
+server:
+  port: 9000
+
+
+spring:
+  profiles:
+      active: dev
+  application:
+    name: Stokn-Middle-API
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          issuer-uri: ${JWT_ISSUER_URI}
+  datasource:
+    driverClassName: org.postgresql.Driver
+    url: jdbc:postgresql://${DATABASE_HOST}:${DATABASE_PORT}/${DATABASE_NAME}
+    username: ${DATABASE_USERNAME}
+    password: ${DATABASE_PASSWORD}
+  jpa:
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    hibernate:
+      ddl-auto: update
+
+
+aws:
+  access-key: 
+  secret-key: 
+  region: eu-west-3
+  cognito:
+    user-pool-id:  ${USER_POOL_ID}
+    app-client-id: ${APP_CLIENT_ID}
+    app-client-secret: ${APP_CLIENT_SECRET}
+
+
+springdoc:
+  version: 'v1.0'
+  swagger-ui:
+    oauth:
+      use-basic-authentication-with-access-code-grant: true
+      use-pkce-with-authorization-code-grant: true
+  oAuthFlow:
+    tokenUrl: https://stokn-api-test.auth.eu-west-3.amazoncognito.com/oauth2/token
+
+
+bitscor:
+  client-id: 74jqp5i9jd67fm84r8pkhr7uhh
+  client-secret: 81d6p9f1dfjvs59v8995tec8qr29j2njn4t8hu84kh8k534p5rm
+
+stokn:
+  account-id: "stokn-dev"
+  fees-portfolio-id: "stokn-fees-dev"
+
+score-chain: "62cwBsK.n3rJOXj6qOfulNHMP7bvsh5pFRcP9FBj"
+binance:
+  brokerage-account-encryption-key: ${BINANCE_ENCRYPTION_KEY}
+
+kraken:
+  encryption-key: ""
+
+coins: ETH,BTC,USDC,USDT,MATIC,ATOM,DOT,SOL,OP,ARB
+   
